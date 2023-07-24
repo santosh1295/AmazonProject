@@ -1,0 +1,5 @@
+tests\RegisterTest.class
+tests\SearchTest.class
+tests\LoginTest.class
+base\Base.class
+listeners\MyListeners.class
