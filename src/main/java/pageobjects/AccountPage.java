@@ -13,6 +13,8 @@ public class AccountPage {
 		
 		this.driver = driver;
 		
+		
+		
 		PageFactory.initElements(driver,this);
 		
 	}
