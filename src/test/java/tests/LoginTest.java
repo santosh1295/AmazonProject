@@ -56,6 +56,17 @@ public class LoginTest extends Base{
 	
 	}
 	
+	@Test(priority=3)
+	public void loginWithInvalidCredentials1() {
 	
+		HomePage homePage = new HomePage(driver);
+		homePage.clickOnMyAccountDropMenu();
+		LoginPage loginPage = homePage.clickOnLoginOption();
+		loginPage.enterEmailAddress(generateNewEmailTimeStamp());
+		loginPage.enterPassword(prop.getProperty("invalidpassword"));
+		loginPage.clickOnLoginButton();
+		
+		Assert.assertTrue(loginPage.retrieveInvalidCredentailsWarningMessage().contains(prop.getProperty("invalidcredentailswarning")));
 
+}
 }

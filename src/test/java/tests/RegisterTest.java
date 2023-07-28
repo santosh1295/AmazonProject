@@ -69,6 +69,25 @@ public class RegisterTest extends Base {
 		Assert.assertEquals(accountSuccessPage.retrieveAccountSuccessMessage(),prop.getProperty("accountsuccessmessage"));
 		
 	}
+
+	
+	@Test(priority=3)
+	public void registerWithAllFields1() {
+		
+		HomePage homePage = new HomePage(driver);
+		homePage.clickOnMyAccountDropMenu();
+		RegisterPage registerPage = homePage.clickOnRegisterOption();
+		registerPage.enterFirstName(prop.getProperty("firstname"));
+		registerPage.enterLastName(prop.getProperty("lastname"));
+		registerPage.enterEmailAddress(generateNewEmailTimeStamp());
+		registerPage.enterTelephone(prop.getProperty("telephone"));
+		registerPage.enterPassword(prop.getProperty("validpassword"));
+		registerPage.enterPasswordConfirm(prop.getProperty("validpassword"));
+		registerPage.selectYesNewsletterOption();
+		registerPage.selectAgree();
+		AccountSuccessPage accountSuccessPage = registerPage.clickOnContinueButton();
+		Assert.assertEquals(accountSuccessPage.retrieveAccountSuccessMessage(),prop.getProperty("accountsuccessmessage"));
+}
 	
 	
 
