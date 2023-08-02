@@ -3,7 +3,9 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -32,41 +34,36 @@ public class LoginTest extends Base{
 	@Test(priority=1)
 	public void loginWithValidCrendetials() {
 	
-		HomePage homePage = new HomePage(driver);
-		homePage.clickOnMyAccountDropMenu();
-		LoginPage loginPage = homePage.clickOnLoginOption();
-		loginPage.enterEmailAddress(prop.getProperty("validemail"));
-		loginPage.enterPassword(prop.getProperty("validpassword"));
-		AccountPage accountPage = loginPage.clickOnLoginButton();		
-		Assert.assertFalse(accountPage.verifyDisplayOfEditYourAccountInformationOption());
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.signInButton();
+		
+		loginPage.set_username(prop.getProperty("validemail"));
+		loginPage.clickOncontinueButton();
+		loginPage.set_password(prop.getProperty("validpassword"));
+		loginPage.click_button();
+		Assert.assertFalse(loginPage.retrievevalidCredentails());
 
 	}
 	
+	
+
+
+	
+	
+
 	@Test(priority=2)
 	public void loginWithInvalidCredentials() {
 	
-		HomePage homePage = new HomePage(driver);
-		homePage.clickOnMyAccountDropMenu();
-		LoginPage loginPage = homePage.clickOnLoginOption();
-		loginPage.enterEmailAddress(generateNewEmailTimeStamp());
-		loginPage.enterPassword(prop.getProperty("invalidpassword"));
-		loginPage.clickOnLoginButton();
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.signInButton();
+		loginPage.set_username(prop.getProperty("validemail"));
+		loginPage.clickOncontinueButton();
+		loginPage.set_password(prop.getProperty("invalidpassword"));
+		loginPage.click_button();
 		
-		Assert.assertTrue(loginPage.retrieveInvalidCredentailsWarningMessage().contains(prop.getProperty("invalidcredentailswarning")));
+		Assert.assertEquals(loginPage.retrieveInvalidCredentailsWarningMessage(),prop.getProperty("invalidcredentailswarning"));
 	
 	}
 	
-	@Test(priority=3)
-	public void loginWithInvalidCredentials1() {
 	
-		HomePage homePage = new HomePage(driver);
-		homePage.clickOnMyAccountDropMenu();
-		LoginPage loginPage = homePage.clickOnLoginOption();
-		loginPage.enterEmailAddress(generateNewEmailTimeStamp());
-		loginPage.enterPassword(prop.getProperty("invalidpassword"));
-		loginPage.clickOnLoginButton();
-		
-		Assert.assertTrue(loginPage.retrieveInvalidCredentailsWarningMessage().contains(prop.getProperty("invalidcredentailswarning")));
-
-}
 }

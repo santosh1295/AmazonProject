@@ -17,87 +17,104 @@ public class RegisterPage {
 		
 	}
 	
-	@FindBy(id="input-firstname")
-	private WebElement firstNameField;
+	@FindBy(id = "createAccountSubmit")
+    private WebElement createAccountSubmitBtn;
 	
-	@FindBy(id="input-lastname")
-	private WebElement lastNameField;
-	
-	@FindBy(id="input-email")
-	private WebElement emailAddressField;
-	
-	@FindBy(id="input-telephone")
-	private WebElement telephoneField;
-	
-	@FindBy(id="input-password")
-	private WebElement passwordField;
-	
-	@FindBy(id="input-confirm")
-	private WebElement confirmPasswordField;
-	
-	@FindBy(name="agree")
-	private WebElement agreeField;
-	
-	@FindBy(xpath="//input[@value='Continue']")
+	@FindBy(css = "a[href='/ref=ap_frn_logo']")
+    private WebElement logoLink;
+    
+    @FindBy(id = "ap_customer_name")
+    private WebElement yourNameTextBox;
+    
+    @FindBy(id = "ap_phone_number")
+    private WebElement phoneNumberTextBox;
+    
+    
+    @FindBy(id = "ap_email")
+    private WebElement emailTextBox;
+    
+    @FindBy(id = "ap_password")
+    private WebElement passwordTextBox;
+    
+    @FindBy(id = "ap_password_check")
+    private WebElement passwordAgainTextBox;
+    
+    @FindBy(id = "continue")
+    private WebElement createAccountBtn;
+
+	private WebElement fullNameTestBox;
+
+	private WebElement CreateYourAmazonAcoountButton;
+
 	private WebElement continueButton;
-	
-	@FindBy(xpath="(//input[@name='newsletter'])[1]")
-	private WebElement yesNewsletterOption;
 
-	
-	public void enterFirstName(String firstNameText) {
-		
-		firstNameField.sendKeys(firstNameText);
-		
+
+    public void set_fullname(String fname) {
+		fullNameTestBox.clear();
+		fullNameTestBox.sendKeys(fname);
 	}
 	
-	public void enterLastName(String lastNameText) {
-		
-		lastNameField.sendKeys(lastNameText);
-		
+    public void set_phonenumber(String fname) {
+    	phoneNumberTextBox.clear();
+    	phoneNumberTextBox.sendKeys(fname);
+	}
+    public void set_email(String usern) {
+    	emailTextBox.clear();
+    	emailTextBox.sendKeys(usern);
+	}
+
+	public void set_password(String userp) {
+		passwordTextBox.clear();
+		passwordTextBox.sendKeys(userp);
 	}
 	
-	public void enterEmailAddress(String emailAddressText) {
-		
-		emailAddressField.sendKeys(emailAddressText);
-		
+	public void set_passwordcheck(String userp) {
+		passwordAgainTextBox.clear();
+		passwordAgainTextBox.sendKeys(userp);
 	}
 	
-	public void enterTelephone(String telephoneText) {
-		
-		telephoneField.sendKeys(telephoneText);
-		
-	}
 	
-	public void enterPassword(String passwordText) {
-		
-		passwordField.sendKeys(passwordText);
-		
-	}
-	
-	public void enterPasswordConfirm(String passwordText) {
-		
-		confirmPasswordField.sendKeys(passwordText);
-		
-	}
-	
-	public void selectYesNewsletterOption() {
-		
-		yesNewsletterOption.click();
-		
-	}
-	
+
 	public void selectAgree() {
-		
-		agreeField.click();
-		
-	}
-	
-	public AccountSuccessPage clickOnContinueButton() {
-		
-		continueButton.click();
-		return new AccountSuccessPage(driver);
+		// TODO Auto-generated method stub
 		
 	}
 
-}
+	public AccountSuccessPage clickOnContinueButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void selectYesNewsletterOption() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static String retrieveAccountSuccessMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+
+	public void clickOnCreateYourAmazonAccountButton() {
+		CreateYourAmazonAcoountButton.submit();
+		// TODO Auto-generated method stub
+	}	
+		public void clickOncontinueButton() {
+			continueButton.submit();
+		
+	
+
+	
+		
+	}
+
+		
+			
+		}
+
+	
+	
+	

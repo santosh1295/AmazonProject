@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import base.Base;
 import pageobjects.AccountSuccessPage;
 import pageobjects.HomePage;
+import pageobjects.LoginPage;
 import pageobjects.RegisterPage;
 
 public class RegisterTest extends Base {
@@ -36,59 +37,45 @@ public class RegisterTest extends Base {
 	@Test(priority=1)
 	public void registerWithMandatoryFields() {
 		
-		HomePage homePage = new HomePage(driver);
-		homePage.clickOnMyAccountDropMenu();
-		RegisterPage registerPage = homePage.clickOnRegisterOption();
-		registerPage.enterFirstName(prop.getProperty("firstname"));
-		registerPage.enterLastName(prop.getProperty("lastname"));
-		registerPage.enterEmailAddress(generateNewEmailTimeStamp());
-		registerPage.enterTelephone(prop.getProperty("telephone"));
-		registerPage.enterPassword(prop.getProperty("validpassword"));
-		registerPage.enterPasswordConfirm(prop.getProperty("validpassword"));
-		registerPage.selectAgree();
-		AccountSuccessPage accountSuccessPage = registerPage.clickOnContinueButton();
-		Assert.assertEquals(accountSuccessPage.retrieveAccountSuccessMessage(),prop.getProperty("accountsuccessmessage"));
+		RegisterPage registerpage = new RegisterPage(driver);
+		
+		registerpage.clickOnCreateYourAmazonAccountButton();
+		registerpage.set_fullname(prop.getProperty("fullname"));
+		registerpage.set_phonenumber(prop.getProperty("phoneNumber"));
+		registerpage.set_email(generateNewEmailTimeStamp());
+		registerpage.set_password(prop.getProperty("password"));
+		//registerpage.set_passwordcheck(prop.getProperty("validpassword"));
+		//registerpage.selectAgree();
+		registerpage.clickOncontinueButton();
+		
+		Assert.assertEquals(RegisterPage.retrieveAccountSuccessMessage(),prop.getProperty("accountsuccessmessage"));
 		
 	}
 	
-	@Test(priority=2)
-	public void registerWithAllFields() {
-		
-		HomePage homePage = new HomePage(driver);
-		homePage.clickOnMyAccountDropMenu();
-		RegisterPage registerPage = homePage.clickOnRegisterOption();
-		registerPage.enterFirstName(prop.getProperty("firstname"));
-		registerPage.enterLastName(prop.getProperty("lastname"));
-		registerPage.enterEmailAddress(generateNewEmailTimeStamp());
-		registerPage.enterTelephone(prop.getProperty("telephone"));
-		registerPage.enterPassword(prop.getProperty("validpassword"));
-		registerPage.enterPasswordConfirm(prop.getProperty("validpassword"));
-		registerPage.selectYesNewsletterOption();
-		registerPage.selectAgree();
-		AccountSuccessPage accountSuccessPage = registerPage.clickOnContinueButton();
-		Assert.assertEquals(accountSuccessPage.retrieveAccountSuccessMessage(),prop.getProperty("accountsuccessmessage"));
+	private void lickOncontinueButton() {
+		// TODO Auto-generated method stub
 		
 	}
 
-	
-	@Test(priority=3)
-	public void registerWithAllFields1() {
+	@Test(priority=2)
+	public void registerWithAllFields() {
 		
-		HomePage homePage = new HomePage(driver);
-		homePage.clickOnMyAccountDropMenu();
-		RegisterPage registerPage = homePage.clickOnRegisterOption();
-		registerPage.enterFirstName(prop.getProperty("firstname"));
-		registerPage.enterLastName(prop.getProperty("lastname"));
-		registerPage.enterEmailAddress(generateNewEmailTimeStamp());
-		registerPage.enterTelephone(prop.getProperty("telephone"));
-		registerPage.enterPassword(prop.getProperty("validpassword"));
-		registerPage.enterPasswordConfirm(prop.getProperty("validpassword"));
-		registerPage.selectYesNewsletterOption();
-		registerPage.selectAgree();
-		AccountSuccessPage accountSuccessPage = registerPage.clickOnContinueButton();
-		Assert.assertEquals(accountSuccessPage.retrieveAccountSuccessMessage(),prop.getProperty("accountsuccessmessage"));
-}
-	
+		RegisterPage registerpage = new RegisterPage(driver);
+		
+		registerpage.clickOnCreateYourAmazonAccountButton();
+		registerpage.set_fullname(prop.getProperty("fullname"));
+		registerpage.set_phonenumber(prop.getProperty("phoneNumber"));
+		registerpage.set_email(generateNewEmailTimeStamp());
+		registerpage.set_password(prop.getProperty("password"));
+		//registerpage.set_passwordcheck(prop.getProperty("validpassword"));
+		//registerpage.selectYesNewsletterOption();
+		//registerpage.selectAgree();
+		lickOncontinueButton();
+		
+		Assert.assertEquals(RegisterPage.retrieveAccountSuccessMessage(),prop.getProperty("accountsuccessmessage"));
+		
+	}
+
 	
 
 }

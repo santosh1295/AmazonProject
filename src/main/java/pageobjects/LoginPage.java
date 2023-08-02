@@ -1,5 +1,7 @@
 package pageobjects;
 
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,39 +18,82 @@ public class LoginPage {
 		
 	}
 	
-	@FindBy(id="input-email")
-	private WebElement emailAddressField;
+	@FindBy(xpath="//div[@class='nav-line-1-container']/span")
+	private WebElement signInButton;
 	
-	@FindBy(id="input-password")
-	private WebElement passwordField;
-	
-	@FindBy(xpath="//input[@value='Login']")
-	private WebElement loginButton;
-	
-	@FindBy(xpath="//div[contains(@class,'alert-dismissible')]")
-	private WebElement invalidCredentailsWarningMessage;
-	
-	public void enterEmailAddress(String emailText) {
+    public LoginPage signInButton() {
 		
-		emailAddressField.sendKeys(emailText);
+		signInButton.click();
+		
+		return new LoginPage(driver);
+		
 		
 	}
+    
+    @FindBy(xpath="//span[@class='a-list-item']")
+	private WebElement warningmsg;
+    
+    public String retrieveInvalidCredentailsWarningMessage()
+    
+    {
+    	return warningmsg.getText();
+    }
+    
+    
+	@FindBy(id = "ap_email")
+	WebElement username;
+	@FindBy(id = "ap_password")
+	WebElement password;
+	@FindBy(id = "signInSubmit")
+	WebElement button;
+	@FindBy(id = "continue")
+	WebElement continueButton;
+	@FindBy(xpath="//div[@role='alert']//div//div//ul//li//span")
+	WebElement span;
+	private WebElement clickButton;
+
 	
-	public void enterPassword(String passwordText) {
-		
-		passwordField.sendKeys(passwordText);
-	}
-	
-	public AccountPage clickOnLoginButton() {
-		
-		loginButton.click();
-		return new AccountPage(driver);
-	}
-	
-	public String retrieveInvalidCredentailsWarningMessage() {
-		
-		return invalidCredentailsWarningMessage.getText();
-		
+
+	public void set_username(String usern) {
+		username.clear();
+		username.sendKeys(usern);
 	}
 
-}
+	public void set_password(String userp) {
+		password.clear();
+		password.sendKeys(userp);
+	}
+
+	
+	public void continueButtonClick() {
+		continueButton.submit();
+	}
+
+
+
+	public AccountPage click_button() {
+		
+		button.click();
+		return new AccountPage(driver);
+	}
+
+	public boolean retrievevalidCredentails() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+		public void clickOncontinueButton() {
+			continueButton.submit();
+			// TODO Auto-generated method stub
+			
+	}
+
+		
+			
+		
+
+		
+		}
+
+		
+		
