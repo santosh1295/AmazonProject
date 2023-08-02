@@ -17,9 +17,8 @@ public class HomePage {
 		
 	}
 	
-	@FindBy(xpath="//span[text()='My Account']")
-	private WebElement myAccountDropMenu;
 	
+
 	@FindBy(linkText="Login")
 	private WebElement loginOption;
 	
@@ -33,6 +32,8 @@ public class HomePage {
 	public void enterSearchTextIntoSearchField(String searchText) {
 		
 		searchBoxField.sendKeys(searchText);
+	
+		
 		
 	}
 	
@@ -49,7 +50,7 @@ public class HomePage {
 	
 	public void clickOnMyAccountDropMenu() {
 		
-		myAccountDropMenu.click();
+	//	myAccountDropMenu.click();
 		
 	}
 	
