@@ -10,7 +10,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.Base;
-import pageobjects.AccountPage;
 import pageobjects.HomePage;
 import pageobjects.LoginPage;
 
@@ -45,12 +44,6 @@ public class LoginTest extends Base{
 
 	}
 	
-	
-
-
-	
-	
-
 	@Test(priority=2)
 	public void loginWithInvalidCredentials() {
 	

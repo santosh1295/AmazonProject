@@ -11,7 +11,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.Base;
-import pageobjects.AccountPage;
 import pageobjects.AddCartPage;
 import pageobjects.HomePage;
 import pageobjects.LoginPage;
