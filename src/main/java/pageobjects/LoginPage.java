@@ -71,10 +71,10 @@ public class LoginPage {
 
 
 
-	public AccountPage click_button() {
+	public LoginPage click_button() {
 		
 		button.click();
-		return new AccountPage(driver);
+		return new LoginPage(driver);
 	}
 
 	public boolean retrievevalidCredentails() {
