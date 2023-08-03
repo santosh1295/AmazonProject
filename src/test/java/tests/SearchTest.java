@@ -1,8 +1,10 @@
 package tests;
 
 import java.io.IOException;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -36,33 +38,43 @@ public class SearchTest extends Base {
 	@Test(priority=1)
 	public void searchWithValidProductName() {
 		
-		HomePage homePage = new HomePage(driver);
-		homePage.enterSearchTextIntoSearchField(prop.getProperty("validproduct"));
-		SearchPage searchPage = homePage.clickOnSearchButton();
-	
-		Assert.assertTrue(searchPage.verifyTheDisplayOfHpProductInSearchResults());
+		SearchPage srcPage = new SearchPage(driver);
+		srcPage.enterTextInSearchFieldAndClickOnSearch(prop.getProperty("validproduct"));
+		Assert.assertTrue(srcPage.verifyTheDisplayOfProductInSearchResults());
 
 	}
 	
 	@Test(priority=2)
 	public void searchWithInvalidProductName() {
-		HomePage homePage = new HomePage(driver);
-		homePage.enterSearchTextIntoSearchField(prop.getProperty("nonexistingproduct"));
-		SearchPage searchPage = homePage.clickOnSearchButton();
-		
-		Assert.assertEquals(searchPage.retrieveNoProductSearchMessage(),prop.getProperty("noproductinsearchmessage"));
+		SearchPage srcPage = new SearchPage(driver);
+		srcPage.enterTextInSearchFieldAndClickOnSearch(prop.getProperty("nonexistingproduct"));	
+		Assert.assertEquals(srcPage.retrieveNoProductSearchMessage(),prop.getProperty("noproductinsearchmessage"));
 	
 	}
 	
 	@Test(priority=3)
 	public void searchByNotProvidingAnyProductName() {
 		
-		HomePage homePage = new HomePage(driver);
-		homePage.enterSearchTextIntoSearchField("");
-		SearchPage searchPage = homePage.clickOnSearchButton();
+		SearchPage srcPage = new SearchPage(driver);
+		srcPage.enterTextInSearchFieldAndClickOnSearch("");	
+		String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, prop.getProperty("baseUrl"), "Search functionality with an empty search field failed.");
 		
-		Assert.assertEquals(searchPage.retrieveNoProductSearchMessage(),prop.getProperty("noproductinsearchmessage"));
-		
+	}
+	
+	@Test(priority=4)
+    public void testSearchAutoSuggestion() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		SearchPage srcPage = new SearchPage(driver);
+		srcPage.enterSearchTextIntoSearchField(prop.getProperty("product1"));
+		try {
+            Thread.sleep(5000); // Adjust the wait time if needed
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Assert.assertTrue(srcPage.getSuggestionsList(),"Auto-suggestions not displayed.");
+        String suggestionText = srcPage.getFirstSuggestion();
+        Assert.assertTrue(suggestionText.contains(prop.getProperty("product1").toLowerCase()), "First suggestion does not contain the search query.");
 	}
 
 }
