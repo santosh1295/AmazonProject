@@ -40,11 +40,19 @@ public class SearchPage {
 	private WebElement firstSuggestion;
 
 	public void enterTextInSearchFieldAndClickOnSearch(String searchText) {
+		searchBoxField.clear();
+		searchBoxField.sendKeys(searchText);
+		searchButton.click();
+	}
+	
+	public void enterTextInSearchFieldAndClickOnSearch1(String searchText) {
+		searchBoxField.clear();
 		searchBoxField.sendKeys(searchText);
 		searchButton.click();
 	}
 
 	public void enterSearchTextIntoSearchField(String searchText) {
+		searchBoxField.clear();
 		searchBoxField.sendKeys(searchText);
 	}
 
