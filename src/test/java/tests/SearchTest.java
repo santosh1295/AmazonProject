@@ -6,7 +6,9 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -18,7 +20,7 @@ public class SearchTest extends Base {
 	
 	public WebDriver driver;
 
-	@BeforeMethod
+	@BeforeClass
 	public void setup() throws IOException {
 		
 		driver = initializeBrowser();
@@ -26,7 +28,7 @@ public class SearchTest extends Base {
 		
 	}
 	
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
 		
 		if(driver!=null) {
@@ -56,7 +58,7 @@ public class SearchTest extends Base {
 	public void searchByNotProvidingAnyProductName() {
 		
 		SearchPage srcPage = new SearchPage(driver);
-		srcPage.enterTextInSearchFieldAndClickOnSearch("");	
+		srcPage.enterTextInSearchFieldAndClickOnSearch1("");	
 		String currentUrl = driver.getCurrentUrl();
         Assert.assertEquals(currentUrl, prop.getProperty("baseUrl"), "Search functionality with an empty search field failed.");
 		
