@@ -50,7 +50,7 @@ public class SearchTest extends Base {
 	public void searchWithInvalidProductName() {
 		SearchPage srcPage = new SearchPage(driver);
 		srcPage.enterTextInSearchFieldAndClickOnSearch(prop.getProperty("nonexistingproduct"));	
-		Assert.assertEquals(srcPage.retrieveNoProductSearchMessage(),prop.getProperty("noproductinsearchmessage"));
+		Assert.assertEquals(srcPage.retrieveNoProductSearchMessage(),prop.getProperty("noproductinsearchmessage1"));
 	
 	}
 	
