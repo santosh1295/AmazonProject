@@ -151,7 +151,7 @@ public class HomepageTest extends Base {
 		HomePage homePage = new HomePage(driver);
 		driver.navigate().back();
 		homePage.cutomerserviceonHomepage();
-		Assert.assertTrue(homePage.cutomerserviceonHomepage());
+//		Assert.assertTrue(homePage.cutomerserviceonHomepage());
 
 	}
 

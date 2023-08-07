@@ -1,5 +1,6 @@
 package pageobjects;
 
+
 import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
@@ -86,8 +87,7 @@ public void clickOnProduct() {
 		System.out.println(actual);
 		if (!actual.equalsIgnoreCase(mainWindowHandle)) { // switching to the opened tab
 			driver.switchTo().window(actual); // opening the URL saved.
-//			String childwindTitle = driver.getTitle();
-//			System.out.println("Child windows title:-" + childwindTitle);
+
 		}
 	}
 }
@@ -142,6 +142,7 @@ public void clickOnUnCheckCheckBox() throws InterruptedException {
 	
 	 checkBoxChecked.click();
 	Thread.sleep(3000);	
+	
 	}
 
 public void clickOnCheckCheckBox() {
@@ -161,6 +162,7 @@ public void clickOnQuantityDropDown() throws InterruptedException {
 	Thread.sleep(3000);
 	quantityDropDown.click();
 	Thread.sleep(3000);
+	
 	}
 
 public void clickOnQuantity4() throws InterruptedException {
