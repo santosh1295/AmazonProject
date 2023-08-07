@@ -53,7 +53,7 @@ public class PaymentPage {
 	}
 
 	
-	@FindBy(xpath = "//div[@class='s-widget-container s-spacing-small s-widget-container-height-small celwidget slot=MAIN template=SEARCH_RESULTS widgetId=search-results_2']//div[@class='a-section a-spacing-none puis-padding-right-small s-title-instructions-style']")
+	@FindBy(xpath = "//img[@alt='American Tourister Spin 49 cms Teal Laptop Backpack']")
 	private WebElement searchProduct;
 
 	public PaymentPage clickOnSearchProduct() {
@@ -83,7 +83,7 @@ public class PaymentPage {
 	}
 
 	
-	@FindBy(xpath = "(//span[@id='productTitle'])[1]")
+	@FindBy(xpath = "//img[@alt='American Tourister Spin 49 cms Teal Laptop Backpack']")  //(//span[@id='productTitle'])[1]
 	private WebElement expectedProduct;
 
 	public boolean verifyTheDisplayOfExpectedProductInSearchResults() {

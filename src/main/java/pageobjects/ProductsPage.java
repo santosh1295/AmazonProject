@@ -1,11 +1,13 @@
 package pageobjects;
 
+
 import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 
 
 public class ProductsPage {
@@ -52,7 +54,7 @@ public class ProductsPage {
 	@FindBy(xpath = "//span[contains(text(),'₹1,000 - ₹5,000')]")
 	private WebElement ₹1000_₹5000;
 
-	@FindBy(xpath = "(//span[@class='a-size-base a-color-base a-text-bold'])[2]")
+	@FindBy(xpath = "//a[@href='/s?k=american+tourister+spin+49+cms+teal+laptop+backpack&i=luggage&rh=n%3A2454169031&s=date-desc-rank&dc&crid=1LJAHELBWNLI8&qid=1691334451&rnid=1318502031&sprefix=%2Caps%2C243&ref=sr_nr_p_36_2&ds=v1%3AUDvA%2BLZS2eWHuEoXBswBB1aVi87wXPKCG0ddgjCwGtI']")  
 	private WebElement ₹1000_₹5000Apply;
 
 	@FindBy(xpath = "//input[@id='low-price']")
@@ -70,7 +72,7 @@ public class ProductsPage {
 	@FindBy(xpath = "//*[@id='productTitle']")
 	private WebElement productName;
 
-	@FindBy(xpath = "//*[@id='corePriceDisplay_desktop_feature_div']/div[1]/span[2]/span[2]/span[2]")
+	@FindBy(xpath = "//div[@class='a-section a-spacing-none aok-align-center aok-relative']")
 	private WebElement productPrice;
 
 	@FindBy(xpath = "//*[@id='availability']/span")
@@ -123,9 +125,9 @@ public class ProductsPage {
 	}
 
 	public void clickonSortByFeatureDropDownMenu1() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		sortBy1.click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 	}
 
@@ -136,10 +138,9 @@ public class ProductsPage {
 	}
 
 	public void clickonSortByFeatureDropDownMenu2() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		sortBy2.click();
-		Thread.sleep(5000);
-
+		Thread.sleep(2000);
 	}
 
 	public void clickOnAvgCustomerReviewOption() {
@@ -149,11 +150,11 @@ public class ProductsPage {
 	}
 
 	public void clickonSortByFeatureDropDownMenu3() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		sortBy3.click();
-		Thread.sleep(5000);
-
-	}
+		Thread.sleep(2000);
+		
+		}
 
 	public void clickOnNewestArrivalsOption() {
 

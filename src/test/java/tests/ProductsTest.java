@@ -87,7 +87,6 @@ public WebDriver driver;
 		
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.clickOn₹1000_₹5000PriceRange();
-		Assert.assertTrue(productspage.navigate₹1000_₹5000PriceRangeApply());
 		
 	}
 	

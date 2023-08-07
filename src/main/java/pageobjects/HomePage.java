@@ -120,7 +120,7 @@ public class HomePage {
 
 		js.executeScript("arguments[0].click();", help);
 
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		String actualhelpTitle = driver.getTitle();
 		System.out.println(actualhelpTitle);
 		return actualhelpTitle;
