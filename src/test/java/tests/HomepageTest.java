@@ -1,44 +1,21 @@
 package tests;
 
-import java.io.IOException;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import base.Base;
-
 import pageobjects.HomePage;
 
+public class HomepageTest extends LoginTest {
 
-public class HomepageTest extends Base {
-
-	public WebDriver driver;
-
-	@BeforeClass
-	public void setup() throws IOException {
-
-		driver = initializeBrowser();
-		driver.navigate().to(prop.getProperty("url"));
-	}
-
-	@AfterClass
-	public void tearDown() {
-
-		driver.quit();
-	}
-
-	@Test(priority = 1)
+	@Test(priority = 4)
 	public void validateHomepageTitle() {
 
 		HomePage homePage = new HomePage(driver);
+		homePage.ClickOnAmazon();
 		homePage.validateHomepageTitle();
 		Assert.assertTrue(homePage.validateHomepageTitle().contains(prop.getProperty("pageTitle")));
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 5)
 	public void validateAmazonLogo() {
 
 		HomePage homePage = new HomePage(driver);
@@ -48,7 +25,7 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 6)
 	public void validateSelectYourAddressAsLocation() {
 
 		HomePage homePage = new HomePage(driver);
@@ -57,7 +34,7 @@ public class HomepageTest extends Base {
 		Assert.assertTrue(homePage.validateSelectYourAddress());
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 7)
 	public void verifySearchBoxForSearching() {
 
 		HomePage homePage = new HomePage(driver);
@@ -67,7 +44,7 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 8)
 	public void validateLanguageDropdown() {
 
 		HomePage homePage = new HomePage(driver);
@@ -76,7 +53,7 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 9)
 
 	public void validateVisibilityOfBurgerMenu() {
 
@@ -90,18 +67,18 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 10)
 	public void verifySell() throws InterruptedException {
 
 		HomePage homePage = new HomePage(driver);
 		homePage.homepageSell();
 		Assert.assertTrue(homePage.homepageSell());
-		
+
 		homePage.clickonSell();
 		Assert.assertEquals(homePage.clickonSell(), prop.getProperty("expectedSellTitle"));
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 11)
 	public void verifyBestSellers() {
 
 		HomePage homePage = new HomePage(driver);
@@ -112,7 +89,7 @@ public class HomepageTest extends Base {
 		Assert.assertEquals(homePage.clickonBestSellers(), prop.getProperty("expectedBestSellersTitle"));
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 12)
 	public void verifyTodaysDeals() {
 
 		HomePage homePage = new HomePage(driver);
@@ -122,7 +99,7 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 11)
+	@Test(priority = 13)
 	public void verifyMobilesonHomepage() {
 
 		HomePage homePage = new HomePage(driver);
@@ -133,7 +110,7 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 12)
+	@Test(priority = 14)
 	public void verifyNewReleasesHomepage() {
 
 		HomePage homePage = new HomePage(driver);
@@ -145,17 +122,16 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 13)
+	@Test(priority = 15)
 	public void verifyCutomerServiceHomepage() {
 
 		HomePage homePage = new HomePage(driver);
 		driver.navigate().back();
 		homePage.cutomerserviceonHomepage();
-//		Assert.assertTrue(homePage.cutomerserviceonHomepage());
 
 	}
 
-	@Test(priority = 14)
+	@Test(priority = 16)
 	public void verifyAmazonPrimeOnHomepage() {
 
 		HomePage homePage = new HomePage(driver);
@@ -166,7 +142,7 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 15)
+	@Test(priority = 17)
 	public void validateHelpOnHomepage() throws InterruptedException {
 
 		HomePage homePage = new HomePage(driver);
@@ -177,7 +153,7 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 16)
+	@Test(priority = 18)
 	public void validateAmazonWebServises() throws InterruptedException {
 
 		HomePage homePage = new HomePage(driver);
@@ -187,7 +163,7 @@ public class HomepageTest extends Base {
 
 	}
 
-	@Test(priority = 17)
+	@Test(priority = 19)
 	public void verifyBackToTop() {
 
 		HomePage homePage = new HomePage(driver);
