@@ -18,58 +18,59 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base {
-	
+
 	public Properties prop;
-	
+
 	WebDriver driver;
-	
+
 	public WebDriver initializeBrowser() throws IOException {
-		
+
 		prop = new Properties();
-		
+
 		File file = new File("src\\main\\java\\resources\\data.properties");
-		
+
 		FileInputStream fis = new FileInputStream(file);
-		
+
 		prop.load(fis);
-		
+
 		String browser = prop.getProperty("browser");
-		
-		if(browser.equals("chrome")) {
-			
+
+		if (browser.equals("chrome")) {
+
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
-			
-		}else if(browser.equals("firefox")) {
-			
+
+		} else if (browser.equals("firefox")) {
+
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
-			
-		}else if(browser.equals("edge")) {
-			
+
+		} else if (browser.equals("edge")) {
+
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
-			
+
 		}
-		
+
 		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		
+
 		return driver;
-		
+
 	}
-	
+
 	public String generateNewEmailTimeStamp() {
-		
+
 		Date date = new Date();
-		return date.toString().replace(" ","_").replace(":","_")+"@gmail.com";
-		
+		return date.toString().replace(" ", "_").replace(":", "_") + "@gmail.com";
+
 	}
-	
-	public String takeScreenshot(String testName,WebDriver driver) throws IOException {
-		
-		File srcScreenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		String screenshotFilePath = System.getProperty("user.dir")+"\\Screenshots\\"+testName+".png";
+
+	public String takeScreenshot(String testName, WebDriver driver) throws IOException {
+
+		File srcScreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		String screenshotFilePath = System.getProperty("user.dir") + "\\Screenshots\\" + testName + ".png";
 		FileUtils.copyFile(srcScreenshot, new File(screenshotFilePath));
 		return screenshotFilePath;
 	}

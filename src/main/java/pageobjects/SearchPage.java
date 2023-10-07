@@ -5,22 +5,16 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SearchPage {
-	
-	WebDriver driver;
-	
+public class SearchPage extends HomePage {
+
 	public SearchPage(WebDriver driver) {
-		
-		this.driver = driver;
-		
-		PageFactory.initElements(driver,this);
-		
+		super(driver);
+
 	}
-	
+
 	@FindBy(xpath = "//input[@id='twotabsearchtextbox']")
 	private WebElement searchBoxField;
 
@@ -38,13 +32,14 @@ public class SearchPage {
 
 	@FindBy(xpath = "//div[@aria-label='mobiles']")
 	private WebElement firstSuggestion;
+	
 
 	public void enterTextInSearchFieldAndClickOnSearch(String searchText) {
 		searchBoxField.clear();
 		searchBoxField.sendKeys(searchText);
 		searchButton.click();
 	}
-	
+
 	public void enterTextInSearchFieldAndClickOnSearch1(String searchText) {
 		searchBoxField.clear();
 		searchBoxField.sendKeys(searchText);

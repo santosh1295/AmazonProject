@@ -4,19 +4,16 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
-
-	WebDriver driver;
+public class HomePage extends LoginPage {
 
 	public HomePage(WebDriver driver) {
-
-		this.driver = driver;
-
-		PageFactory.initElements(driver, this);
+		super(driver);
 
 	}
+
+	@FindBy(xpath = "//i[@class='a-icon a-icon-logo']")
+	private WebElement amazon;
 
 	@FindBy(xpath = "//a[@id='nav-logo-sprites']")
 	private WebElement amazonLogo;
@@ -68,6 +65,11 @@ public class HomePage {
 
 	@FindBy(xpath = "//span[text()='Prime']")
 	private WebElement prime;
+
+	public void ClickOnAmazon() {
+		amazon.click();
+
+	}
 
 	public boolean validateAmazonLogo() {
 
@@ -148,7 +150,6 @@ public class HomePage {
 	public boolean todaysdealsOnHomepage() {
 		return todaysdeals.isDisplayed();
 	}
-
 
 	public boolean mobilesOnHomepage() {
 		return mobiles.isDisplayed();

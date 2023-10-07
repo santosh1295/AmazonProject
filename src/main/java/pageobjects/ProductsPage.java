@@ -1,31 +1,17 @@
 package pageobjects;
 
-
 import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-
-
-public class ProductsPage {
-	WebDriver driver;
+public class ProductsPage extends SearchPage {
 
 	public ProductsPage(WebDriver driver) {
-
-		this.driver = driver;
-
-		PageFactory.initElements(driver, this);
+		super(driver);
 
 	}
-
-	@FindBy(xpath = "//input[@id='twotabsearchtextbox']")
-	private WebElement searchBoxField;
-
-	@FindBy(xpath = "//input[@id='nav-search-submit-button']")
-	private WebElement searchIcon;
 
 	@FindBy(xpath = "//*[@id='a-autoid-0-announce']/span[2]")
 	private WebElement sortBy;
@@ -54,7 +40,7 @@ public class ProductsPage {
 	@FindBy(xpath = "//span[contains(text(),'₹1,000 - ₹5,000')]")
 	private WebElement ₹1000_₹5000;
 
-	@FindBy(xpath = "//a[@href='/s?k=american+tourister+spin+49+cms+teal+laptop+backpack&i=luggage&rh=n%3A2454169031&s=date-desc-rank&dc&crid=1LJAHELBWNLI8&qid=1691334451&rnid=1318502031&sprefix=%2Caps%2C243&ref=sr_nr_p_36_2&ds=v1%3AUDvA%2BLZS2eWHuEoXBswBB1aVi87wXPKCG0ddgjCwGtI']")  
+	@FindBy(xpath = "//a[@href='/s?k=american+tourister+spin+49+cms+teal+laptop+backpack&i=luggage&rh=n%3A2454169031&s=date-desc-rank&dc&crid=1LJAHELBWNLI8&qid=1691334451&rnid=1318502031&sprefix=%2Caps%2C243&ref=sr_nr_p_36_2&ds=v1%3AUDvA%2BLZS2eWHuEoXBswBB1aVi87wXPKCG0ddgjCwGtI']")
 	private WebElement ₹1000_₹5000Apply;
 
 	@FindBy(xpath = "//input[@id='low-price']")
@@ -66,7 +52,7 @@ public class ProductsPage {
 	@FindBy(xpath = "//span[@class='a-button a-spacing-top-mini a-button-base s-small-margin-left']//input[@type='submit']")
 	private WebElement priceFilterGo;
 
-	@FindBy(xpath = "//img[@alt='American Tourister Spin 49 cms Teal Laptop Backpack']") 
+	@FindBy(xpath = "//img[@alt='American Tourister Spin 49 cms Teal Laptop Backpack']")
 	private WebElement americanTouristerBag;
 
 	@FindBy(xpath = "//*[@id='productTitle']")
@@ -84,20 +70,6 @@ public class ProductsPage {
 	@FindBy(xpath = "//*[@id='NATC_SMART_WAGON_CONF_MSG_SUCCESS']/span")
 	private WebElement productAddedCart;
 	
-	
-	
-
-	public void searchProductOnSearchBox(String searchProduct) {
-
-		searchBoxField.sendKeys(searchProduct);
-
-	}
-
-	public void clickOnSearchIcon() {
-
-		searchIcon.click();
-
-	}
 
 	public String getProductsPageTitle() {
 
@@ -153,8 +125,8 @@ public class ProductsPage {
 		Thread.sleep(2000);
 		sortBy3.click();
 		Thread.sleep(2000);
-		
-		}
+
+	}
 
 	public void clickOnNewestArrivalsOption() {
 
