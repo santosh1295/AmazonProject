@@ -9,8 +9,14 @@ public class SearchTest extends HomepageTest {
 	@Test(priority = 20)
 	public void searchWithInvalidProductName() {
 		SearchPage srcPage = new SearchPage(driver);
+
+		srcPage.enterTextInSearchFieldAndClickOnSearch(prop.getProperty("nonexistingproduct"));	
+		Assert.assertEquals(srcPage.retrieveNoProductSearchMessage(),prop.getProperty("noproductinsearchmessage1"));
+	
+
 		srcPage.enterTextInSearchFieldAndClickOnSearch(prop.getProperty("nonexistingproduct"));
 		Assert.assertEquals(srcPage.retrieveNoProductSearchMessage(), prop.getProperty("noproductinsearchmessage1"));
+
 
 	}
 

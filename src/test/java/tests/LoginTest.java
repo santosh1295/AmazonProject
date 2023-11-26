@@ -7,6 +7,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import base.Base;
+
+import pageobjects.HomePage;
+
 import pageobjects.LoginPage;
 
 public class LoginTest extends Base {
@@ -33,6 +36,12 @@ public class LoginTest extends Base {
 
 	}
 
+	
+	@Test(priority=2)
+	public void loginWithInvalidCredentials() {
+	
+
+
 	@Test(priority = 2)
 	public void VerifyLogout() {
 
@@ -43,6 +52,7 @@ public class LoginTest extends Base {
 
 	@Test(priority = 3)
 	public void verifyLoginWithInvalidCredentials() {
+
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.set_username(prop.getProperty("validemail"));

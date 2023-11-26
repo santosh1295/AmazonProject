@@ -66,6 +66,10 @@ public class LoginPage {
 
 	public LoginPage click_button() {
 
+
+	public LoginPage click_button() {
+		
+
 		button.click();
 		return new LoginPage(driver);
 	}

@@ -60,6 +60,10 @@ public class MyListeners extends Base implements ITestListener {
 	@Override
 	public void onTestSkipped(ITestResult result) {
 
+		extentTest.log(Status.SKIP, "Test Skipped");
+
+
+
 	}
 
 	@Override
