@@ -1,41 +1,33 @@
 package tests;
+
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-
 import base.Base;
+
 import pageobjects.HomePage;
+
 import pageobjects.LoginPage;
 
-public class LoginTest extends Base{
-	
+public class LoginTest extends Base {
+
 	public WebDriver driver;
-	
-	@BeforeMethod
+
+	@BeforeSuite
 	public void setup() throws IOException {
-	    
+
 		driver = initializeBrowser();
-		driver.get(	prop.getProperty("url"));
+		driver.get(prop.getProperty("url"));
 	}
-	
-	@AfterMethod
-	public void tearDown() {
-		
-		driver.quit();
-	}
-	
-	@Test(priority=1)
-	public void loginWithValidCrendetials() {
-	
+
+	@Test(priority = 1)
+	public void verifyLoginWithValidCrendetials() {
+
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.signInButton();
-		
 		loginPage.set_username(prop.getProperty("validemail"));
 		loginPage.clickOncontinueButton();
 		loginPage.set_password(prop.getProperty("validpassword"));
@@ -43,20 +35,34 @@ public class LoginTest extends Base{
 		Assert.assertFalse(loginPage.retrievevalidCredentails());
 
 	}
+
 	
 	@Test(priority=2)
 	public void loginWithInvalidCredentials() {
 	
+
+
+	@Test(priority = 2)
+	public void VerifyLogout() {
+
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.signInButton();
+		loginPage.clickOnSignout();
+
+	}
+
+	@Test(priority = 3)
+	public void verifyLoginWithInvalidCredentials() {
+
+
+		LoginPage loginPage = new LoginPage(driver);
 		loginPage.set_username(prop.getProperty("validemail"));
 		loginPage.clickOncontinueButton();
 		loginPage.set_password(prop.getProperty("invalidpassword"));
 		loginPage.click_button();
-		
-		Assert.assertEquals(loginPage.retrieveInvalidCredentailsWarningMessage(),prop.getProperty("invalidcredentailswarning"));
-	
+
+		Assert.assertEquals(loginPage.retrieveInvalidCredentailsWarningMessage(),
+				prop.getProperty("invalidcredentailswarning"));
+
 	}
-	
-	
+
 }
