@@ -1,5 +1,8 @@
-tests\RegisterTest.class
 tests\SearchTest.class
+listeners\MyListeners.class
+tests\AddCartTest.class
+tests\ProductsTest.class
+tests\PaymentTest.class
 tests\LoginTest.class
 base\Base.class
-listeners\MyListeners.class
+tests\HomepageTest.class

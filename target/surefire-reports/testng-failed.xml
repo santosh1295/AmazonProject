@@ -6,13 +6,95 @@
   </listeners>
   <test thread-count="5" name="Test(failed)" verbose="0">
     <classes>
-      <class name="tests.LoginTest">
+      <class name="tests.AddCartTest">
         <methods>
+          <include name="verifyQuantityDropDownNavigate"/>
+          <include name="verifyProductImageNavigate"/>
+          <include name="VarifyApplyQuantityWisePrice"/>
+          <include name="verifyProceedToBuyButtonNavigate"/>
           <include name="setup"/>
-          <include name="loginWithValidCrendetials"/>
+          <include name="verifyGiftCheckBoxCheckUnchecked"/>
+          <include name="VerifyProductPriceNavigate"/>
+          <include name="tearDown"/>
+          <include name="VerifyCartPageTitle"/>
+          <include name="verifyProductName"/>
+          <include name="verifyProductAvailableInStock"/>
+          <include name="verifyDeleteOptionNavigate"/>
+        </methods>
+      </class> <!-- tests.AddCartTest -->
+      <class name="tests.ProductsTest">
+        <methods>
+          <include name="verifySortByFeatureApplyWithNewestArrivalsOnProductsPage"/>
+          <include name="tearDown"/>
+          <include name="verifyProductNameNavigateOnProductPageAndValidateWithValidProductName"/>
+          <include name="verifyAvilablePriceRangeOptionApplyForPriceFilterOnProductsPage"/>
+          <include name="verifySortByFeatureApplyWithLowToHighPriceOnProductsPage"/>
+          <include name="verifyProductAvilableInStockOnProductPage"/>
+          <include name="verifySortByFeatureApplyWithAvgCustomerReviewOnProductsPage"/>
+          <include name="verifyProductPageTitle"/>
+          <include name="verifySortByFeatureNavigateOnProductsPage"/>
+          <include name="verifyProductPriceNavigateOnProductPage"/>
+          <include name="verifyProductAddToCart"/>
+          <include name="verifyproductsPageTitle"/>
+          <include name="MinMaxPriceFilterBoxWorkingOnProductsPage"/>
+          <include name="setup"/>
+          <include name="verifySortByFeatureApplyWithHighToLowPriceOnProductsPage"/>
+          <include name="verifyAddToCartButtonNavigateOnProductPage"/>
+        </methods>
+      </class> <!-- tests.ProductsTest -->
+      <class name="tests.PaymentTest">
+        <methods>
+          <include name="signInEmailAddressMethod"/>
+          <include name="clickOnRadioButtonToChooseCreditCardMethod"/>
+          <include name="paymentOptionsBoxDisplayedMethod"/>
+          <include name="clickOnCartIcon"/>
+          <include name="clickOnSearchProduct"/>
+          <include name="clickOnSearchFieldIcon"/>
+          <include name="setup"/>
+          <include name="clickOnRadioButtonOfAddressMethod"/>
+          <include name="inputOfSearchField"/>
+          <include name="searchProductDisplayed"/>
+          <include name="clickOnSignInButtonMethod"/>
+          <include name="tearDown"/>
+          <include name="clickOnContinueButtonMethod"/>
+          <include name="signInPasswordMethod"/>
+          <include name="clickOnUseThisAddressButtMethod"/>
+          <include name="clickOnProceedToBuyButton"/>
+          <include name="clickOnaddToCartButton"/>
+          <include name="ClickOnsignInMethod"/>
+          <include name="expectedProductDisplayed"/>
+        </methods>
+      </class> <!-- tests.PaymentTest -->
+      <class name="tests.SearchTest">
+        <methods>
+          <include name="testSearchAutoSuggestion"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="searchWithInvalidProductName"/>
+          <include name="searchByNotProvidingAnyProductName"/>
+        </methods>
+      </class> <!-- tests.SearchTest -->
+      <class name="tests.HomepageTest">
+        <methods>
+          <include name="validateHelpOnHomepage"/>
+          <include name="verifySearchBoxForSearching"/>
+          <include name="verifyAmazonPrimeOnHomepage"/>
+          <include name="validateAmazonLogo"/>
+          <include name="verifyBestSellers"/>
+          <include name="validateVisibilityOfBurgerMenu"/>
+          <include name="validateLanguageDropdown"/>
+          <include name="verifyTodaysDeals"/>
+          <include name="verifyCutomerServiceHomepage"/>
+          <include name="verifyBackToTop"/>
+          <include name="verifySell"/>
+          <include name="setup"/>
+          <include name="validateAmazonWebServises"/>
+          <include name="validateSelectYourAddressAsLocation"/>
+          <include name="verifyMobilesonHomepage"/>
+          <include name="verifyNewReleasesHomepage"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- tests.LoginTest -->
+      </class> <!-- tests.HomepageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
