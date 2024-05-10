@@ -44,7 +44,7 @@ public class MyListeners extends Base implements ITestListener {
 			driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
 					.get(result.getInstance());
 		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 
@@ -59,7 +59,11 @@ public class MyListeners extends Base implements ITestListener {
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
+
 		extentTest.log(Status.SKIP, "Test Skipped");
+
+
+
 	}
 
 	@Override

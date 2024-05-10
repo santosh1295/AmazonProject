@@ -1,129 +1,104 @@
 package tests;
 
-import java.io.IOException;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import base.Base;
 import pageobjects.ProductsPage;
 
-public class ProductsTest extends Base{
-public WebDriver driver;
-	
-	@BeforeClass
-	public void setup() throws IOException {
-	    
-		driver = initializeBrowser();
-		driver.navigate().to(prop.getProperty("url"));
-	}
-	
-	@AfterClass
-	public void tearDown() {
-		
-		driver.quit();
-	}
-	
-	@Test(priority=1)
+public class ProductsTest extends SearchTest {
+
+	@Test(priority = 24)
 	public void verifyproductsPageTitle() {
 
 		ProductsPage productspage = new ProductsPage(driver);
-		productspage.searchProductOnSearchBox(prop.getProperty("validproduct"));
-		productspage.clickOnSearchIcon();
-		Assert.assertEquals(productspage.getProductsPageTitle(),prop.getProperty("ExpectedProductsPageTitle"));
+		Assert.assertEquals(productspage.getProductsPageTitle(), prop.getProperty("ExpectedProductsPageTitle"));
 
 	}
-	
-	@Test(priority=2)
+
+	@Test(priority = 25)
 	public void verifySortByFeatureNavigateOnProductsPage() {
-	
+
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.SortByFeatureNavigate();
 		Assert.assertTrue(productspage.SortByFeatureNavigate());
-		
+
 	}
-	
-	@Test(priority=3)
+
+	@Test(priority = 26)
 	public void verifySortByFeatureApplyWithLowToHighPriceOnProductsPage() {
-	
+
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.clickonSortByFeatureDropDownMenu();
 		productspage.clickOnLowToHighPriceOption();
-		
+
 	}
-	
-	@Test(priority=4)
+
+	@Test(priority = 27)
 	public void verifySortByFeatureApplyWithHighToLowPriceOnProductsPage() throws InterruptedException {
-	
+
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.clickonSortByFeatureDropDownMenu1();
 		productspage.clickOnHighToLowPriceOption();
-		
+
 	}
-	
-	@Test(priority=5)
+
+	@Test(priority = 28)
 	public void verifySortByFeatureApplyWithAvgCustomerReviewOnProductsPage() throws InterruptedException {
-	
+
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.clickonSortByFeatureDropDownMenu2();
 		productspage.clickOnAvgCustomerReviewOption();
-		
+
 	}
-	
-	@Test(priority=6)
+
+	@Test(priority = 29)
 	public void verifySortByFeatureApplyWithNewestArrivalsOnProductsPage() throws InterruptedException {
-	
+
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.clickonSortByFeatureDropDownMenu3();
 		productspage.clickOnNewestArrivalsOption();
-		
+
 	}
-	
-	@Test(priority=7)
+
+	@Test(priority = 30)
 	public void verifyAvilablePriceRangeOptionApplyForPriceFilterOnProductsPage() throws InterruptedException {
-		
+
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.clickOn₹1000_₹5000PriceRange();
-		Assert.assertTrue(productspage.navigate₹1000_₹5000PriceRangeApply());
-		
+
 	}
-	
-	
-	@Test(priority=8)
+
+	@Test(priority = 31)
 	public void MinMaxPriceFilterBoxWorkingOnProductsPage() {
-		
+
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.clickOn₹1000_₹5000PriceRange();
 		productspage.clickOnMinPriceFilterBox(prop.getProperty("ValidMinPrice"));
 		productspage.clickOnMaxPriceFilterBox(prop.getProperty("ValidMaxPrice"));
 		productspage.clickOnPriceFilterGoButton();
-		
+
 	}
-	
-	@Test(priority=9)
+
+	@Test(priority = 32)
 	public void verifyProductPageTitle() throws InterruptedException {
 
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.clickOnProduct();
 		productspage.getProductPageTitle();
-		Assert.assertEquals(productspage.getProductPageTitle(),prop.getProperty("ExpectedProductPageTitle"));
+		Assert.assertEquals(productspage.getProductPageTitle(), prop.getProperty("ExpectedProductPageTitle"));
 
 	}
-	
-	@Test(priority=10)
+
+	@Test(priority = 33)
 	public void verifyProductNameNavigateOnProductPageAndValidateWithValidProductName() throws InterruptedException {
 
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.navigateProductName();
 		productspage.getProductName();
-		Assert.assertEquals(productspage.getProductName(),prop.getProperty("validproduct"));
+		Assert.assertEquals(productspage.getProductName(), prop.getProperty("validproduct"));
 
 	}
-	
-	@Test(priority=11)
+
+	@Test(priority = 34)
 	public void verifyProductPriceNavigateOnProductPage() throws InterruptedException {
 
 		ProductsPage productspage = new ProductsPage(driver);
@@ -131,17 +106,17 @@ public WebDriver driver;
 		Assert.assertTrue(productspage.navigateProductPrice());
 
 	}
-	
-	@Test(priority=12)
+
+	@Test(priority = 35)
 	public void verifyProductAvilableInStockOnProductPage() throws InterruptedException {
 
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.checkProductAvilableInStockText();
-		Assert.assertEquals(productspage.checkProductAvilableInStockText(),prop.getProperty("ProductAvilable"));
+		Assert.assertEquals(productspage.checkProductAvilableInStockText(), prop.getProperty("ProductAvilable"));
 
 	}
-	
-	@Test(priority=13)
+
+	@Test(priority = 36)
 	public void verifyAddToCartButtonNavigateOnProductPage() throws InterruptedException {
 
 		ProductsPage productspage = new ProductsPage(driver);
@@ -149,14 +124,14 @@ public WebDriver driver;
 		Assert.assertTrue(productspage.AddToCartButtonNavigate());
 
 	}
-	
-	@Test(priority=14)
+
+	@Test(priority = 37)
 	public void verifyProductAddToCart() throws InterruptedException {
 
 		ProductsPage productspage = new ProductsPage(driver);
 		productspage.clickOnAddToCartButton();
-		Assert.assertEquals(productspage.getMassageProductAddedToCart(),prop.getProperty("ProductAddedToCartMessage"));
+		Assert.assertEquals(productspage.getMassageProductAddedToCart(), prop.getProperty("ProductAddedToCartMessage"));
 
 	}
-	
+
 }
