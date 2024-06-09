@@ -5,10 +5,9 @@
     <classes>
       <class name="tests.LoginTest">
         <methods>
+          <include name="VerifyLogout"/>
+          <include name="verifyLoginWithInvalidCredentials"/>
           <include name="setup"/>
-          <include name="loginWithValidCrendetials"/>
-          <include name="tearDown"/>
-          <include name="loginWithInvalidCredentials"/>
         </methods>
       </class> <!-- tests.LoginTest -->
     </classes>
